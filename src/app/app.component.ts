@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
   template: `
     <div class="form-wrapper">
       <form [formGroup]="form">
-        <div>
+        <div class="row">
           <label for="firstName">First name</label>
           <input
             formControlName="firstName"
@@ -16,7 +16,7 @@ import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
             class="userFirstname"
           />
         </div>
-        <div>
+        <div class="row">
           <label for="lastName">Last name</label>
           <input
             formControlName="lastName"
@@ -26,7 +26,7 @@ import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
             class="userLastname"
           />
         </div>
-        <div>
+        <div class="row">
           <label for="phoneNumber">Phone number</label>
           <input
             formControlName="phone"
@@ -36,7 +36,7 @@ import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
             class="userPhone"
           />
         </div>
-        <div>
+        <div class="row">
           <input
             (click)="submit()"
             type="button"
@@ -48,13 +48,18 @@ import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
       <div class="informationTable">
         <ng-container *ngFor="let row of list; let i = index">
           <div class="element-{{ i }}">
-            <div>{{ row.firstName }} {{ row.lastName }} {{ row.phone }}</div>
+            <div class="row">
+              {{ row.firstName }} {{ row.lastName }} {{ row.phone }}
+            </div>
           </div>
         </ng-container>
       </div>
     </div>
   `,
-  styles: [],
+  styles: [
+    'label { display: inline-block; min-width: 100px; }',
+    '.row { margin-bottom: 10px; }',
+  ],
 })
 export class AppComponent implements OnInit {
   title = 'Angular-Phone-Book';
